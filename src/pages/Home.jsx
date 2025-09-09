@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Code, Zap, Terminal, Cpu } from "lucide-react";
+import { SiInstagram, SiLinkedin, SiMedium } from "react-icons/si";
+import { FiExternalLink } from "react-icons/fi";
 
 const eventLogo = "/event logo.png";
 
@@ -11,15 +12,10 @@ export default function Home() {
     document.title = "Techno Arena | One Arena. One Code.";
   }, []);
 
-  const codeSnippets = ["<Arena/>", "while(true)", "{ code }", "++score"];
-  const techIcons = [Code, Zap, Terminal, Cpu];
-
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden px-6 md:px-12 lg:px-20">
-      
       {/* Main Content Grid */}
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        
         {/* Left Side - Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -100 }}
@@ -33,7 +29,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 1 }}
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight"
+              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight neon-text"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
@@ -52,18 +48,33 @@ export default function Home() {
                 ARENA
               </motion.span>
             </motion.h1>
-            
+
+            {/* Stranger Things "Upside Down" Shadow */}
+            <motion.div
+              className="absolute top-full left-0 text-9xl font-black text-red-900 opacity-10 pointer-events-none select-none transform -scale-y-100"
+              animate={{
+                opacity: [0.05, 0.1, 0.05],
+                y: [0, 10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+              }}
+            >
+              TECHNO ARENA
+            </motion.div>
+
             {/* Animated Background Text */}
             <div className="absolute -inset-4 opacity-5 text-9xl font-black text-red-500 select-none pointer-events-none">
               <motion.div
                 animate={{
                   y: [0, -20, 0],
-                  opacity: [0.05, 0.1, 0.05]
+                  opacity: [0.05, 0.1, 0.05],
                 }}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               >
                 ARENA
@@ -89,76 +100,69 @@ export default function Home() {
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             >
               Infinite Loops.
             </motion.p>
           </motion.div>
 
-          {/* Interactive Code Elements */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex flex-wrap gap-2 md:gap-3"
-          >
-            {codeSnippets.map((snippet, index) => (
-              <motion.div
-                key={index}
-                className="px-3 py-2 bg-gray-900/60 border border-red-500/20 rounded-lg font-mono text-xs md:text-sm text-gray-300 cursor-pointer backdrop-blur-sm hover:bg-red-500/10 transition-colors duration-300"
-                whileHover={{
-                  scale: 1.05,
-                  borderColor: "rgba(239, 68, 68, 0.4)",
-                  y: -2
-                }}
-                whileTap={{ scale: 0.98 }}
-                animate={{
-                  y: [0, -1, 0],
-                }}
-                transition={{
-                  duration: 2.5 + index * 0.3,
-                  repeat: Infinity,
-                  delay: index * 0.1,
-                  ease: "easeInOut"
-                }}
-              >
-                {snippet}
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Social Media Links */}
+          <div className="mt-6 flex flex-col divide-y divide-gray-600 text-white text-lg max-w-max">
+            <a
+              href="#"
+              className="flex items-center gap-3 py-3 hover:underline group"
+              title="Follow on Instagram"
+            >
+              <SiInstagram
+                size={28}
+                color="#E4405F"
+                className="group-hover:animate-pulse transition"
+              />
+              <span className="underline-offset-4 group-hover:underline transition">
+                Follow on Instagram
+              </span>
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-3 py-3 hover:underline group"
+              title="Connect to LinkedIn"
+            >
+              <SiLinkedin
+                size={28}
+                color="#0077B5"
+                className="group-hover:animate-pulse transition"
+              />
+              <span className="underline-offset-4 group-hover:underline transition">
+                Connect to LinkedIn
+              </span>
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-3 py-3 hover:underline group"
+              title="Follow on Medium"
+            >
+              <SiMedium
+                size={28}
+                color="#000000"
+                className="group-hover:animate-pulse transition"
+              />
+              <span className="underline-offset-4 group-hover:underline transition">
+                Follow on Medium
+              </span>
+            </a>
 
-          {/* Tech Icons */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="flex gap-6 items-center"
-          >
-            {techIcons.map((Icon, index) => (
-              <motion.div
-                key={index}
-                className="p-3 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl cursor-pointer"
-                whileHover={{
-                  scale: 1.2,
-                  rotate: 360,
-                  backgroundColor: "#dc2626"
-                }}
-                whileTap={{ scale: 0.9 }}
-                animate={{
-                  rotate: [0, 5, -5, 0],
-                }}
-                transition={{
-                  duration: 3 + index,
-                  repeat: Infinity,
-                  delay: index * 0.3,
-                  ease: "easeInOut"
-                }}
-              >
-                <Icon size={24} className="text-gray-400" />
-              </motion.div>
-            ))}
-          </motion.div>
+            {/* Website Button */}
+            <a
+              href="https://ieeeras-vit.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold text-sm sm:text-base transition transform hover:scale-105 hover:shadow-lg animate-pulse-slow"
+              title="Visit Our Website"
+            >
+              Visit Our Website <FiExternalLink />
+            </a>
+          </div>
         </motion.div>
 
         {/* Right Side - Event Logo */}
@@ -187,12 +191,12 @@ export default function Home() {
               transition={{
                 duration: 6,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
               whileHover={{
                 rotateY: [0, 15, -15, 0],
                 scale: 1.1,
-                filter: "drop-shadow(0 0 30px rgba(239, 68, 68, 0.5))"
+                filter: "drop-shadow(0 0 30px rgba(239, 68, 68, 0.5))",
               }}
             />
 
@@ -206,37 +210,15 @@ export default function Home() {
               transition={{
                 duration: 3,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             />
-
-            {/* Orbiting Elements */}
-            {[...Array(3)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-3 h-3 bg-red-500 rounded-full"
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: 8 + i * 2,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                style={{
-                  top: "50%",
-                  left: "50%",
-                  transformOrigin: `${120 + i * 40}px 0px`,
-                }}
-              />
-            ))}
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Interactive Background Elements */}
+      {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Dynamic Grid */}
         <motion.div
           className="absolute inset-0 opacity-5"
           style={{
@@ -244,7 +226,7 @@ export default function Home() {
               linear-gradient(rgba(239, 68, 68, 0.1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(239, 68, 68, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: "50px 50px"
+            backgroundSize: "50px 50px",
           }}
           animate={{
             backgroundPositionX: [0, 50],
@@ -252,18 +234,20 @@ export default function Home() {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "linear"
+            ease: "linear",
           }}
         />
-
-        {/* Floating Interactive Particles */}
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 bg-red-500 rounded-full opacity-40"
             initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+              x:
+                Math.random() *
+                (typeof window !== "undefined" ? window.innerWidth : 1000),
+              y:
+                Math.random() *
+                (typeof window !== "undefined" ? window.innerHeight : 800),
             }}
             animate={{
               y: [null, -30, 30, -30],
@@ -275,24 +259,95 @@ export default function Home() {
               duration: 4 + Math.random() * 2,
               repeat: Infinity,
               delay: i * 0.3,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
           />
         ))}
       </div>
 
-      {/* Interactive Scan Line Effect */}
+      {/* Stranger Things Alphabet Wall */}
+      <div className="absolute bottom-10 w-full flex justify-center z-0">
+        <div className="grid grid-cols-13 gap-2 text-lg sm:text-xl md:text-2xl lg:text-3xl text-center font-mono tracking-widest">
+          {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter, i) => {
+            const colors = [
+              "text-red-500",
+              "text-green-400",
+              "text-yellow-300",
+              "text-blue-400",
+              "text-pink-400",
+              "text-purple-400",
+            ];
+            const colorClass = colors[i % colors.length];
+
+            return (
+              <motion.div
+                key={i}
+                className={`${colorClass} drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]`}
+                animate={{
+                  opacity: [0.2, 1, 0.3, 0.8, 0.5, 1, 0.4], // random flickering like lights
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 2, // different timing per letter
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              >
+                {letter}
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Fog / Smoke Layer */}
+      <motion.div
+        className="absolute inset-0 bg-[url('/fog.png')] bg-cover bg-center opacity-20 mix-blend-screen pointer-events-none"
+        animate={{
+          backgroundPositionX: ["0%", "100%", "0%"],
+          backgroundPositionY: ["0%", "50%", "0%"],
+          opacity: [0.1, 0.3, 0.15],
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+
+      {/* Scan Line */}
       <motion.div
         className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-60"
         animate={{
-          y: [0, typeof window !== 'undefined' ? window.innerHeight : 800, 0],
+          x: [-200, 1200],
         }}
         transition={{
-          duration: 8,
+          duration: 5,
           repeat: Infinity,
-          ease: "linear"
+          ease: "linear",
         }}
       />
+
+      <style jsx>{`
+        .neon-text {
+          text-shadow: 0 0 5px #ff0000, 0 0 10px #ff4c4c, 0 0 20px #ff0000,
+            0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000, 0 0 75px #ff0000;
+        }
+        /* Slow pulse animation for the button */
+        .animate-pulse-slow {
+          animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+          0%,
+          100% {
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+          }
+          50% {
+            box-shadow: 0 0 20px rgba(239, 68, 68, 1);
+          }
+        }
+      `}</style>
     </div>
   );
 }
