@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Benguiat+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asimovian&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Asimovian&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Asimovian&family=Frijole&display=swap');
+
+/* Stranger Things themed main heading */
+.heading {
+    font-family: "Benguiat Pro", "Frijole", system-ui, serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    color: #ff0000;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 2rem 0;
+    position: relative;
+    
+}
+.heading{
+    font-family: "Frijole", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4.5rem;
+  color: #ff0000;
+}
+
+/* Responsive subtitle styling */
+h2 {
+    font-family: "Asimovian", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(255, 0, 0, 0.3);
+    margin: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(1rem, 3vw, 1.5rem) 0;
+    letter-spacing: clamp(1px, 0.5vw, 2px);
+    line-height: 1.3;
+    position: relative;
+    padding: 0 1rem;
+}
+ 
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(60%, 300px);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #ff0000; }
+    100% { box-shadow: 0 0 20px #ff0000; }
+}
+
+/* Responsive paragraph styling */
+h3 {
+    font-family: "Asimovian", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: #e0e0e0;
+    line-height: 1.8;
+    text-align: justify;
+    text-justify: inter-word;
+    margin: clamp(1.5rem, 4vw, 2rem) auto;
+    max-width: min(90vw, 900px);
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 0 clamp(1rem, 3vw, 2rem);
+    hyphens: auto;
+    word-spacing: 0.05em;
+}
+
+/* Special styling for first h3 (subtitle) */
+h3:first-of-type,
+h3.sep {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: #ebacac;
+    font-weight: 700;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+    text-align: center;
+    text-justify: auto;
+    max-width: min(95vw, 800px);
+}
+
+/* Special card styling for last h3 */
+h3:last-of-type {
+    background: linear-gradient(135deg, 
+        rgba(139, 0, 0, 0.2) 0%, 
+        rgba(255, 0, 0, 0.1) 50%, 
+        rgba(139, 0, 0, 0.2) 100%);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    border-radius: clamp(15px, 3vw, 20px);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    margin: clamp(2rem, 5vw, 3rem) auto;
+    max-width: min(95vw, 1000px);
+    box-shadow: 
+        0 8px 32px rgba(255, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 0 1px rgba(255, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-align: justify;
+    text-justify: inter-word;
+    word-spacing: 0.1em;
+}
+
+/* Corner accent for the card */
+h3:last-of-type::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: clamp(15px, 3vw, 20px);
+    height: clamp(15px, 3vw, 20px);
+    border-top: 2px solid #ff0000;
+    border-right: 2px solid #ff0000;
+    opacity: 0.7;
+}
+
+/* Container adjustments for better mobile experience */
+.about-event-container {
+    padding: clamp(1rem, 3vw, 2rem);
+    min-height: 100vh;
+}
+
+/* Improved mobile responsiveness */
+@media (max-width: 768px) {
+    .heading {
+        margin: 1.5rem 0;
+        letter-spacing: 0.02em;
+    }
+    
+    h2 {
+        margin: 1.5rem 0 1rem 0;
+        padding: 0 0.5rem;
+    }
+    
+    h3 {
+        text-align: left;
+        text-justify: auto;
+        word-spacing: normal;
+        padding: 0 1rem;
+    }
+    
+    h3:first-of-type,
+    h3.sep {
+        text-align: center;
+    }
+    
+    h3:last-of-type {
+        text-align: left;
+        word-spacing: normal;
+        hyphens: auto;
+        margin: 1.5rem 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        margin: 1rem 0;
+    }
+    
+    h2 {
+        margin: 1rem 0 0.5rem 0;
+    }
+    
+    h3 {
+        padding: 0 0.5rem;
+        margin: 1rem auto;
+    }
+    
+    h3:last-of-type {
+        margin: 1rem 0.25rem;
+        border-radius: 15px;
+    }
+}
+
+/* Ultra-wide screen adjustments */
+@media (min-width: 1400px) {
+    .heading {
+        font-size: 6rem;
+    }
+    
+    h2 {
+        font-size: 3rem;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+        max-width: 1200px;
+    }
+    
+    h3:last-of-type {
+        max-width: 1200px;
+    }
+}
