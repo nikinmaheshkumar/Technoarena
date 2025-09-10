@@ -1,5 +1,8 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Benguiat+Pro:wght@400;700&family=Asimovian&family=Anta&family=Frijole&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
+
 
 /* Apply gradient background */
 body {
@@ -123,13 +126,30 @@ body {
 }
 
 @layer base {
-    * {
-        @apply border-border outline-ring/50;
-    }
+  * {
+    @apply border-border outline-ring/50;
+  }
 
-    body {
-        @apply bg-background text-foreground;
-    }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Font classes */
+  .font-Asimovian {
+    font-family: 'Asimovian', sans-serif;
+  }
+
+  .font-Frijole {
+    font-family: 'Frijole', cursive;
+  }
+
+  .font-BenguiatPro {
+    font-family: 'Benguiat Pro', sans-serif;
+  }
+
+  .font-Anta {
+    font-family: 'Anta', sans-serif;
+  }
 }
 
 .flicker-text {
@@ -137,24 +157,23 @@ body {
 }
 
 @keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow:
+      0 0 2px #ff0000,
+      0 0 8px #ff0000,
+      0 0 12px #ff1a1a,
+      0 0 16px #ff3333;
+  }
 
-    0%,
-    18%,
-    22%,
-    25%,
-    53%,
-    57%,
-    100% {
-        text-shadow:
-            0 0 2px #ff0000,
-            0 0 8px #ff0000,
-            0 0 12px #ff1a1a,
-            0 0 16px #ff3333;
-    }
-
-    20%,
-    24%,
-    55% {
-        text-shadow: none;
-    }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
 }
