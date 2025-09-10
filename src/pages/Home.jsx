@@ -74,11 +74,11 @@ export default function Home() {
 
           {/* Tagline */}
           <motion.div className="space-y-2 sm:space-y-4">
-            <p className="text-base sm:text-lg md:text-2xl font-light text-gray-300 leading-relaxed [font-family:'Asimovian',sans-serif]">
+            <p className="text-base sm:text-lg md:text-2xl font-light text-gray-300 leading-relaxed font-Asimovian">
               One Arena. One Code.
             </p>
             <motion.p
-              className="text-lg sm:text-xl md:text-3xl font-bold text-red-400 neon-text inline-block [font-family:'Asimovian',sans-serif]"
+              className="text-lg sm:text-xl md:text-3xl font-bold text-red-400 font-Asimovian neon-text inline-block"
               animate={{ opacity: [1, 0.7, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -88,30 +88,29 @@ export default function Home() {
 
           {/* Social Media Links */}
           <div className="mt-4 sm:mt-6 flex flex-col divide-y divide-gray-600 text-white text-sm sm:text-base max-w-max mx-auto lg:mx-0">
-            <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group">
+            <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group font-Frijole italic">
               <SiInstagram size={22} color="#E4405F" />
-              <span className="[font-family:'Frijole',cursive]">Follow on Instagram</span>
+              <span>Follow on Instagram</span>
             </a>
-            <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group">
+            <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group font-Frijole italic">
               <SiLinkedin size={22} color="#0077B5" />
-              <span className="[font-family:'Frijole',cursive]">Connect to LinkedIn</span>
+              <span>Connect to LinkedIn</span>
             </a>
-            <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group">
+            <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group font-Frijole italic">
               <SiMedium size={22} color="#000000" />
-              <span className="[font-family:'Frijole',cursive]">Follow on Medium</span>
+              <span>Follow on Medium</span>
             </a>
+
             <a
               href="https://ieeeras-vit.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 sm:mt-6 inline-flex items-center gap-2 px-4 py-1 bg-red-600 hover:bg-red-700 text-white font-semibold text-sm transition rounded-md w-fit mx-auto lg:mx-0 [font-family:'Asimovian',sans-serif]"
+              className="mt-4 sm:mt-6 inline-flex items-center justify-center gap-2 px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-md font-Asimovian font-semibold text-sm transition mx-auto sm:mx-0"
             >
               Visit Our Website <FiExternalLink />
             </a>
-
-
-
           </div>
+
 
         </motion.div>
       </div>
