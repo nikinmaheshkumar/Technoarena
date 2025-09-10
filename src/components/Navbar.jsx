@@ -13,21 +13,21 @@ export default function Navbar() {
     { label: "Timeline", onClick: () => { setMobileMenuOpen(false); navigate("/timeline"); } },
   ];
 
+  // Common transparent/glass effect style
+  const glassStyle = {
+    background: "rgba(255, 255, 255, 0.05)",
+    backdropFilter: "blur(12px)",
+    WebkitBackdropFilter: "blur(12px)",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
+    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
+  };
+
   return (
     <>
       {/* Desktop gooey nav */}
       <div className="hidden md:block w-full fixed top-0 left-0 z-50 px-4 md:px-8">
         <div className="flex justify-center pt-4">
-          <div
-            className="p-3 rounded-2xl shadow-lg"
-            style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              backdropFilter: "blur(12px)",
-              WebkitBackdropFilter: "blur(12px)",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
-            }}
-          >
+          <div className="p-3 rounded-2xl" style={glassStyle}>
             <GooeyNav
               items={navItems}
               particleCount={15}
@@ -43,9 +43,18 @@ export default function Navbar() {
       </div>
 
       {/* Mobile navbar */}
-      <header className="md:hidden fixed top-0 left-0 w-full z-50 bg-red-600 flex items-center px-4 h-12">
+      // Mobile navbar
+      <header
+        className="md:hidden fixed top-0 left-0 w-full z-50 flex items-center px-4 h-12"
+        style={{
+          background: "rgba(255, 255, 255, 0.05)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+        }}
+      >
         <button
-          className="text-black focus:outline-none"
+          className="text-white focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -77,12 +86,12 @@ export default function Navbar() {
 
       {/* Mobile dropdown menu */}
       {mobileMenuOpen && (
-        <nav className="md:hidden fixed top-12 left-0 w-full bg-red-600 z-40 flex flex-col p-2 space-y-1">
+        <nav className="md:hidden fixed top-12 left-0 w-full z-40 flex flex-col p-2 space-y-1" style={glassStyle}>
           {navItems.map((item, index) => (
             <button
               key={index}
               onClick={item.onClick}
-              className="text-black py-3 px-4 rounded hover:bg-black hover:text-white text-left text-base"
+              className="text-white py-3 px-4 rounded hover:bg-black hover:text-white text-left text-base"
             >
               {item.label}
             </button>
