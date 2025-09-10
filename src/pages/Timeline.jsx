@@ -161,16 +161,18 @@ export default function Timeline() {
 
         .timeline-box {
           background: linear-gradient(135deg, 
-            rgba(139, 0, 0, 0.3) 0%, 
-            rgba(255, 0, 0, 0.15) 50%, 
-            rgba(139, 0, 0, 0.3) 100%);
-          backdrop-filter: blur(10px);
-          border: 2px solid rgba(255, 0, 0, 0.4);
+            rgba(0, 0, 0, 0.8) 0%, 
+            rgba(139, 0, 0, 0.4) 50%, 
+            rgba(0, 0, 0, 0.8) 100%);
+          backdrop-filter: blur(15px);
+          border: 3px solid #ff0000;
           border-radius: 20px;
           padding: 1.5rem 2rem;
           box-shadow: 
-            0 8px 32px rgba(255, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            0 0 25px rgba(255, 0, 0, 0.6),
+            0 8px 32px rgba(255, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 0 20px rgba(255, 0, 0, 0.1);
           transition: all 0.3s ease;
           position: relative;
           min-width: 200px;
@@ -178,9 +180,12 @@ export default function Timeline() {
 
         .timeline-box:hover {
           transform: translateY(-5px);
+          border-color: #ffffff;
           box-shadow: 
-            0 12px 40px rgba(255, 0, 0, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            0 0 35px rgba(255, 0, 0, 0.8),
+            0 12px 40px rgba(255, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 0 25px rgba(255, 0, 0, 0.15);
         }
 
         .timeline-box::after {
@@ -197,17 +202,17 @@ export default function Timeline() {
 
         .slot-title {
           font-family: "Asimovian", sans-serif;
-          font-size: 1.4rem;
+          font-size: 1.6rem;
           font-weight: 700;
-          color: #ffffff;
+          color: #fed5d5ff;
           margin-bottom: 0.5rem;
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
         }
 
         .slot-time {
-          font-family: "Asimovian", sans-serif;
-          font-size: 1.1rem;
-          color: #ffcccc;
+          font-family:sans-serif;
+          font-size: 1.35rem;
+          color: #ffffff;
           text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
         }
 
@@ -271,32 +276,37 @@ export default function Timeline() {
 
         .slot-box {
           background: linear-gradient(135deg, 
-            rgba(139, 0, 0, 0.3) 0%, 
-            rgba(255, 0, 0, 0.15) 50%, 
-            rgba(139, 0, 0, 0.3) 100%);
-          backdrop-filter: blur(10px);
-          border: 2px solid rgba(255, 0, 0, 0.4);
+            rgba(0, 0, 0, 0.8) 0%, 
+            rgba(139, 0, 0, 0.4) 50%, 
+            rgba(0, 0, 0, 0.8) 100%);
+          backdrop-filter: blur(15px);
+          border: 3px solid #ff0000;
           border-radius: clamp(15px, 3vw, 20px);
           padding: clamp(1.5rem, 4vw, 2rem);
           position: relative;
           width: calc(50% - 2rem);
           box-shadow: 
-            0 8px 32px rgba(255, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            0 0 25px rgba(255, 0, 0, 0.6),
+            0 8px 32px rgba(255, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 0 20px rgba(255, 0, 0, 0.1);
           transition: all 0.3s ease;
         }
 
         .slot-box:hover {
           transform: translateY(-5px);
+          border-color: #ffffff;
           box-shadow: 
-            0 12px 40px rgba(255, 0, 0, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            0 0 35px rgba(255, 0, 0, 0.8),
+            0 12px 40px rgba(255, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 0 25px rgba(255, 0, 0, 0.15);
         }
 
         .slot-box::after {
           content: '';
           position: absolute;
-          top: 10px;
+          top: 15px;
           right: 10px;
           width: clamp(15px, 3vw, 20px);
           height: clamp(15px, 3vw, 20px);
