@@ -21,11 +21,11 @@ export default function Navbar() {
           <div
             className="p-3 rounded-2xl shadow-lg"
             style={{
-              background: "rgba(255, 255, 255, 0.05)", // Transparent glass background
-              backdropFilter: "blur(12px)", // Blur effect for glassmorphism
-              WebkitBackdropFilter: "blur(12px)", // Safari support
-              border: "1px solid rgba(255, 255, 255, 0.2)", // Subtle glass border
-              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)", // Smooth shadow
+              background: "rgba(255, 255, 255, 0.05)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
             }}
           >
             <GooeyNav
@@ -42,8 +42,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile hamburger bar */}
-      <header className="md:hidden fixed top-0 left-0 w-full z-50 bg-red-600 flex items-center justify-between px-4 h-12">
+      {/* Mobile navbar */}
+      <header className="md:hidden fixed top-0 left-0 w-full z-50 bg-red-600 flex items-center px-4 h-12">
         <button
           className="text-black focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -73,8 +73,6 @@ export default function Navbar() {
             </svg>
           )}
         </button>
-        {/* Optional title or logo */}
-        <div className="text-black font-semibold">Menu</div>
       </header>
 
       {/* Mobile dropdown menu */}
@@ -84,13 +82,16 @@ export default function Navbar() {
             <button
               key={index}
               onClick={item.onClick}
-              className="text-black py-2 px-3 rounded hover:bg-black hover:text-white text-left"
+              className="text-black py-3 px-4 rounded hover:bg-black hover:text-white text-left text-base"
             >
               {item.label}
             </button>
           ))}
         </nav>
       )}
+
+      {/* Spacer so page content isn’t hidden under navbar */}
+      <div className="h-12 md:h-20"></div>
     </>
   );
 }
