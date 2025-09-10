@@ -265,41 +265,6 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Stranger Things Alphabet Wall */}
-      <div className="absolute bottom-10 w-full flex justify-center z-0">
-        <div className="grid grid-cols-13 gap-2 text-lg sm:text-xl md:text-2xl lg:text-3xl text-center font-mono tracking-widest">
-          {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter, i) => {
-            const colors = [
-              "text-red-500",
-              "text-green-400",
-              "text-yellow-300",
-              "text-blue-400",
-              "text-pink-400",
-              "text-purple-400",
-            ];
-            const colorClass = colors[i % colors.length];
-
-            return (
-              <motion.div
-                key={i}
-                className={`${colorClass} drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]`}
-                animate={{
-                  opacity: [0.2, 1, 0.3, 0.8, 0.5, 1, 0.4], // random flickering like lights
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 2 + Math.random() * 2, // different timing per letter
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              >
-                {letter}
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-
       {/* Fog / Smoke Layer */}
       <motion.div
         className="absolute inset-0 bg-[url('/fog.png')] bg-cover bg-center opacity-20 mix-blend-screen pointer-events-none"
@@ -331,22 +296,16 @@ export default function Home() {
 
       <style jsx>{`
         .neon-text {
-          text-shadow: 0 0 5px #ff0000, 0 0 10px #ff4c4c, 0 0 20px #ff0000,
-            0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000, 0 0 75px #ff0000;
-        }
-        /* Slow pulse animation for the button */
-        .animate-pulse-slow {
-          animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-          0%,
-          100% {
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
-          }
-          50% {
-            box-shadow: 0 0 20px rgba(239, 68, 68, 1);
-          }
-        }
+  text-shadow: 0 0 6px #ff0000, 0 0 12px #ff4c4c;
+  animation: neon-flicker 3s infinite alternate;
+}
+
+@keyframes neon-flicker {
+  0% { text-shadow: 0 0 3px #ff0000, 0 0 8px #ff4c4c; }
+  50% { text-shadow: 0 0 6px #ff0000, 0 0 12px #ff4c4c; }
+  100% { text-shadow: 0 0 4px #ff0000, 0 0 9px #ff4c4c; }
+}
+
       `}</style>
     </div>
   );
