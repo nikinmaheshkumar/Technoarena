@@ -8,7 +8,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: "Home", onClick: () => { setMobileMenuOpen(false); navigate("/"); } },
-    { label: "About RAS", onClick: () => { setMobileMenuOpen(false); navigate("/about-ras"); } },
+    // { label: "About RAS", onClick: () => { setMobileMenuOpen(false); navigate("/about-ras"); } },
     { label: "About Event", onClick: () => { setMobileMenuOpen(false); navigate("/about-event"); } },
     { label: "Timeline", onClick: () => { setMobileMenuOpen(false); navigate("/timeline"); } },
   ];
