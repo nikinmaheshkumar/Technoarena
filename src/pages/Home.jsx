@@ -74,42 +74,45 @@ export default function Home() {
 
           {/* Tagline */}
           <motion.div className="space-y-2 sm:space-y-4">
-            <p className="text-base sm:text-lg md:text-2xl font-light text-gray-300 leading-relaxed font-Asimovian">
+            <p className="text-base sm:text-lg md:text-2xl font-light text-gray-300 leading-relaxed [font-family:'Asimovian',sans-serif]">
               One Arena. One Code.
             </p>
             <motion.p
-              className="text-lg sm:text-xl md:text-3xl font-bold text-red-400"
+              className="text-lg sm:text-xl md:text-3xl font-bold text-red-400 neon-text inline-block [font-family:'Asimovian',sans-serif]"
               animate={{ opacity: [1, 0.7, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <span className="font-Asimovian">Infinite Loops.</span>
+              Infinite Loops.
             </motion.p>
-
           </motion.div>
 
           {/* Social Media Links */}
           <div className="mt-4 sm:mt-6 flex flex-col divide-y divide-gray-600 text-white text-sm sm:text-base max-w-max mx-auto lg:mx-0">
             <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group">
               <SiInstagram size={22} color="#E4405F" />
-              <span className="font-Frijole">Follow on Instagram</span>
+              <span className="[font-family:'Frijole',cursive]">Follow on Instagram</span>
             </a>
             <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group">
               <SiLinkedin size={22} color="#0077B5" />
-              <span className="font-Frijole">Connect to LinkedIn</span>
+              <span className="[font-family:'Frijole',cursive]">Connect to LinkedIn</span>
             </a>
             <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group">
               <SiMedium size={22} color="#000000" />
-              <span className="font-Frijole">Follow on Medium</span>
+              <span className="[font-family:'Frijole',cursive]">Follow on Medium</span>
             </a>
             <a
               href="https://ieeeras-vit.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 sm:mt-6 inline-flex items-center gap-2 px-4 py-1.5 sm:px-5 sm:py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-Frijole font-semibold text-xs sm:text-sm md:text-base transition"
+              className="mt-4 sm:mt-6 inline-flex items-center gap-2 px-4 py-1 bg-red-600 hover:bg-red-700 text-white font-semibold text-sm transition rounded-md w-fit mx-auto lg:mx-0 [font-family:'Asimovian',sans-serif]"
             >
               Visit Our Website <FiExternalLink />
             </a>
+
+
+
           </div>
+
         </motion.div>
       </div>
 
