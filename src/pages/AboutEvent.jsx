@@ -2,7 +2,7 @@ import React from 'react';
 import './AboutEvent.css'
 const AboutEvent = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-base-200">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-base-200 p-4 ">
       
 <img src="https://fontmeme.com/permalink/250910/e2b66775309d9b3d9cd3efd2f5fdc9a6.png" alt="stranger-things-font" border="0"/>
       {/* <h1 className='heading'>TECHNO ARENA</h1> */}
