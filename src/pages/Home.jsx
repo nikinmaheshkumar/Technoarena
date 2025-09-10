@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SiInstagram, SiLinkedin, SiMedium } from "react-icons/si";
 import { FiExternalLink } from "react-icons/fi";
-
+import GooeyNav from "../components/GooeyNav";
 const eventLogo = "/event logo.png";
 
 export default function Home() {
@@ -52,19 +52,29 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-black leading-none tracking-tight neon-text"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-black leading-none tracking-tight neon-text heading"
           >
-            <motion.span className="block bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
-              TECHNO
-            </motion.span>
-            <motion.span className="block bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mt-2">
-              ARENA
-            </motion.span>
+            <motion.div
+              className="flex flex-col md:items-start items-center mt-4"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <img
+                src="https://fontmeme.com/permalink/250910/e2b66775309d9b3d9cd3efd2f5fdc9a6.png"
+                alt="Stranger Things Logo"
+                className="
+                  w-auto
+                  h-32 md:h-44 lg:h-52
+                  mx-auto md:mx-0
+                "
+              />
+            </motion.div>
           </motion.h1>
 
           {/* Tagline */}
           <motion.div className="space-y-2 sm:space-y-4">
-            <p className="text-base sm:text-lg md:text-2xl font-light text-gray-300 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-2xl font-light text-gray-300 leading-relaxed font-Asimovian">
               One Arena. One Code.
             </p>
             <motion.p
@@ -72,29 +82,30 @@ export default function Home() {
               animate={{ opacity: [1, 0.7, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              Infinite Loops.
+              <span className="font-Asimovian">Infinite Loops.</span>
             </motion.p>
+
           </motion.div>
 
           {/* Social Media Links */}
           <div className="mt-4 sm:mt-6 flex flex-col divide-y divide-gray-600 text-white text-sm sm:text-base max-w-max mx-auto lg:mx-0">
             <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group">
               <SiInstagram size={22} color="#E4405F" />
-              <span>Follow on Instagram</span>
+              <span className="font-Frijole">Follow on Instagram</span>
             </a>
             <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group">
               <SiLinkedin size={22} color="#0077B5" />
-              <span>Connect to LinkedIn</span>
+              <span className="font-Frijole">Connect to LinkedIn</span>
             </a>
             <a href="#" className="flex items-center gap-2 sm:gap-3 py-2 sm:py-3 group">
               <SiMedium size={22} color="#000000" />
-              <span>Follow on Medium</span>
+              <span className="font-Frijole">Follow on Medium</span>
             </a>
             <a
               href="https://ieeeras-vit.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 sm:mt-6 inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold text-xs sm:text-sm md:text-base transition"
+              className="mt-4 sm:mt-6 inline-flex items-center gap-2 px-4 py-1.5 sm:px-5 sm:py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-Frijole font-semibold text-xs sm:text-sm md:text-base transition"
             >
               Visit Our Website <FiExternalLink />
             </a>
@@ -102,7 +113,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Background Effects (unchanged) */}
+      {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute inset-0 opacity-5"

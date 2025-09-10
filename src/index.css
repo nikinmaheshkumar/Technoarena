@@ -1,3 +1,9 @@
+@import url('https://fonts.cdnfonts.com/css/benguiat-pro');
+/* Benguiat Pro */
+@import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap');
+/* Frijole */
+@import url('https://fonts.googleapis.com/css2?family=Asimovian&display=swap');
+/* Asimovian */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -5,16 +11,15 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 1) 5%,
-    rgba(251, 42, 42, 1) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(0, 0, 0, 1) 5%,
+      rgba(251, 42, 42, 1) 100%);
   background-attachment: fixed;
   background-size: cover;
-  font-family: 'Poppins', sans-serif;
+  /* Default font now via Tailwind class: font-BenguiatPro */
 }
 
+/* Tailwind Theme Variables */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -124,28 +129,61 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Base styles */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-BenguiatPro;
   }
 }
 
+/* Flicker effect for neon text */
 .flicker-text {
   animation: flicker 2.5s infinite alternate;
 }
 
 @keyframes flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
     text-shadow:
       0 0 2px #ff0000,
       0 0 8px #ff0000,
       0 0 12px #ff1a1a,
       0 0 16px #ff3333;
   }
-  20%, 24%, 55% {
+
+  20%,
+  24%,
+  55% {
     text-shadow: none;
   }
+}
+
+/* Font utility classes for Tailwind usage */
+@layer utilities {
+  .font-BenguiatPro {
+    font-family: 'Benguiat Pro', sans-serif !important;
+  }
+
+  .font-Asimovian {
+    font-family: 'Asimovian', sans-serif !important;
+  }
+
+  .font-Frijole {
+    font-family: 'Frijole', system-ui !important;
+  }
+}
+
+.infinite-loops,
+.socials {
+  @apply font-Frijole;
 }
