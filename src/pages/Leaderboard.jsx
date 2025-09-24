@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronUpIcon, ChevronDownIcon, MinusIcon } from "@heroicons/react/24/solid";
-import leaderboardData from "../data/leaderboard.json";
 import Sparkline from "../components/Sparkline";
 import TeamMembersAccordion from "../components/TeamMembersAccordion";
 
@@ -12,41 +11,58 @@ export default function Leaderboard() {
   useEffect(() => {
     document.title = "Techno Arena | Leaderboard";
     
-    // Simulate data loading
-    setTimeout(() => {
-      // Process teams data: calculate totals and position changes
-      const processedTeams = leaderboardData.map(team => ({
-        ...team,
-        totalPoints: team.points.reduce((sum, points) => sum + points, 0),
-        currentPoints: team.points[team.points.length - 1] || 0,
-        previousPoints: team.points.length > 1 ? team.points[team.points.length - 2] : team.points[0] || 0
-      }));
-
-      // Sort teams by total points to get current positions
-      const sortedTeams = processedTeams.sort((a, b) => b.totalPoints - a.totalPoints);
-      
-      // Calculate position changes based on points progression
-      const teamsWithPositionChanges = sortedTeams.map((team, index) => {
-        const currentPosition = index + 1;
+    // Fetch leaderboard data from GitHub
+    const fetchLeaderboardData = async () => {
+      try {
+        const response = await fetch('https://raw.githubusercontent.com/nikinmaheshkumar/Technoarena/refs/heads/main/src/data/leaderboard.json');
         
-        // Calculate what the position would have been without the last round
-        const teamsWithoutLastRound = processedTeams.map(t => ({
-          ...t,
-          tempTotal: t.points.slice(0, -1).reduce((sum, points) => sum + points, 0)
-        })).sort((a, b) => b.tempTotal - a.tempTotal);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch leaderboard data: ${response.status}`);
+        }
         
-        const previousPosition = teamsWithoutLastRound.findIndex(t => t.teamName === team.teamName) + 1;
-        const positionChange = previousPosition - currentPosition;
+        const leaderboardData = await response.json();
         
-        return {
+        // Process teams data: calculate totals and position changes
+        const processedTeams = leaderboardData.map(team => ({
           ...team,
-          positionChange
-        };
-      });
+          totalPoints: team.points.reduce((sum, points) => sum + points, 0),
+          currentPoints: team.points[team.points.length - 1] || 0,
+          previousPoints: team.points.length > 1 ? team.points[team.points.length - 2] : team.points[0] || 0
+        }));
 
-      setTeams(teamsWithPositionChanges);
-      setLoading(false);
-    }, 500);
+        // Sort teams by total points to get current positions
+        const sortedTeams = processedTeams.sort((a, b) => b.totalPoints - a.totalPoints);
+        
+        // Calculate position changes based on points progression
+        const teamsWithPositionChanges = sortedTeams.map((team, index) => {
+          const currentPosition = index + 1;
+          
+          // Calculate what the position would have been without the last round
+          const teamsWithoutLastRound = processedTeams.map(t => ({
+            ...t,
+            tempTotal: t.points.slice(0, -1).reduce((sum, points) => sum + points, 0)
+          })).sort((a, b) => b.tempTotal - a.tempTotal);
+          
+          const previousPosition = teamsWithoutLastRound.findIndex(t => t.teamName === team.teamName) + 1;
+          const positionChange = previousPosition - currentPosition;
+          
+          return {
+            ...team,
+            positionChange
+          };
+        });
+
+        setTeams(teamsWithPositionChanges);
+      } catch (error) {
+        console.error('Error fetching leaderboard data:', error);
+        // Set empty array to prevent crashes
+        setTeams([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchLeaderboardData();
   }, []);
 
   const getPositionIcon = (change) => {
