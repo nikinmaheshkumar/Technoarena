@@ -11,7 +11,7 @@ export default function App() {
     <Router>
       <Navbar />
       {/* Content padding top to avoid being hidden under fixed navbar */}
-      <div className="pt-32 min-h-screen">
+      <div className="pt-12 min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-ras" element={<AboutRAS />} />
