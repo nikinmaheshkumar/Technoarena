@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronUpIcon, ChevronDownIcon, MinusIcon } from "@heroicons/react/24/solid";
 import leaderboardData from "../data/leaderboard.json";
+import Sparkline from "../components/Sparkline";
 
 export default function Leaderboard() {
   const [teams, setTeams] = useState([]);
@@ -12,9 +13,37 @@ export default function Leaderboard() {
     
     // Simulate data loading
     setTimeout(() => {
-      // Sort teams by points in descending order
-      const sortedTeams = leaderboardData.sort((a, b) => b.points - a.points);
-      setTeams(sortedTeams);
+      // Process teams data: calculate totals and position changes
+      const processedTeams = leaderboardData.map(team => ({
+        ...team,
+        totalPoints: team.points.reduce((sum, points) => sum + points, 0),
+        currentPoints: team.points[team.points.length - 1] || 0,
+        previousPoints: team.points.length > 1 ? team.points[team.points.length - 2] : team.points[0] || 0
+      }));
+
+      // Sort teams by total points to get current positions
+      const sortedTeams = processedTeams.sort((a, b) => b.totalPoints - a.totalPoints);
+      
+      // Calculate position changes based on points progression
+      const teamsWithPositionChanges = sortedTeams.map((team, index) => {
+        const currentPosition = index + 1;
+        
+        // Calculate what the position would have been without the last round
+        const teamsWithoutLastRound = processedTeams.map(t => ({
+          ...t,
+          tempTotal: t.points.slice(0, -1).reduce((sum, points) => sum + points, 0)
+        })).sort((a, b) => b.tempTotal - a.tempTotal);
+        
+        const previousPosition = teamsWithoutLastRound.findIndex(t => t.teamName === team.teamName) + 1;
+        const positionChange = previousPosition - currentPosition;
+        
+        return {
+          ...team,
+          positionChange
+        };
+      });
+
+      setTeams(teamsWithPositionChanges);
       setLoading(false);
     }, 500);
   }, []);
@@ -84,11 +113,12 @@ export default function Leaderboard() {
         className="max-w-6xl mx-auto"
       >
         {/* Headers */}
-        <div className="hidden md:grid grid-cols-12 gap-4 mb-6 px-6 py-4 text-gray-300 font-semibold text-sm uppercase tracking-wider">
+        <div className="hidden md:grid grid-cols-14 gap-4 mb-6 px-6 py-4 text-gray-300 font-semibold text-sm uppercase tracking-wider">
           <div className="col-span-1 text-center">Rank</div>
-          <div className="col-span-4">Team Name</div>
+          <div className="col-span-3">Team Name</div>
           <div className="col-span-3">Members</div>
           <div className="col-span-2 text-center">Points</div>
+          <div className="col-span-3 text-center">Progress</div>
           <div className="col-span-2 text-center">Change</div>
         </div>
 
@@ -142,7 +172,7 @@ export default function Leaderboard() {
                     </div>
                     <div className="text-right">
                       <div className={`text-2xl font-bold ${topThree ? "text-red-400" : "text-white"}`}>
-                        {team.points.toLocaleString()}
+                        {team.totalPoints.toLocaleString()}
                       </div>
                       <div className="flex items-center justify-end mt-1">
                         {getPositionIcon(team.positionChange)}
@@ -152,10 +182,22 @@ export default function Leaderboard() {
                       </div>
                     </div>
                   </div>
+                  {/* Mobile Sparkline */}
+                  <div className="mt-4 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-xs text-gray-400 mb-2">Points Progress</div>
+                      <Sparkline 
+                        data={team.points} 
+                        width={120} 
+                        height={40} 
+                        color={topThree ? "#f87171" : "#6b7280"}
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Desktop Layout */}
-                <div className="hidden md:grid grid-cols-12 gap-4 items-center p-6">
+                <div className="hidden md:grid grid-cols-14 gap-4 items-center p-6">
                   {/* Rank */}
                   <div className="col-span-1 text-center">
                     <div className={`
@@ -168,13 +210,10 @@ export default function Leaderboard() {
                   </div>
 
                   {/* Team Name */}
-                  <div className="col-span-4">
+                  <div className="col-span-3">
                     <h3 className={`text-xl md:text-2xl font-bold font-Asimovian ${topThree ? "text-red-300" : "text-white"}`}>
                       {team.teamName}
                     </h3>
-                    <p className="text-sm text-gray-400 mt-1">
-                      {team.contact}
-                    </p>
                   </div>
 
                   {/* Members */}
@@ -191,9 +230,25 @@ export default function Leaderboard() {
                   {/* Points */}
                   <div className="col-span-2 text-center">
                     <div className={`text-2xl md:text-3xl font-bold ${topThree ? "text-red-400" : "text-white"}`}>
-                      {team.points.toLocaleString()}
+                      {team.totalPoints.toLocaleString()}
                     </div>
                     <div className="text-xs text-gray-400 mt-1">points</div>
+                  </div>
+
+                  {/* Progress Sparkline */}
+                  <div className="col-span-3 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="text-xs text-gray-400 mb-2">Points Progress</div>
+                      <Sparkline 
+                        data={team.points} 
+                        width={100} 
+                        height={35} 
+                        color={topThree ? "#f87171" : "#6b7280"}
+                      />
+                      <div className="text-xs text-gray-500 mt-1">
+                        {team.points.length} rounds
+                      </div>
+                    </div>
                   </div>
 
                   {/* Position Change */}
