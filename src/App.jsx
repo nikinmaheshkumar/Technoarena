@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import AboutRAS from "./pages/AboutRAS";
 import AboutEvent from "./pages/AboutEvent";
 import Timeline from "./pages/Timeline";
+import Leaderboard from "./pages/Leaderboard";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/about-ras" element={<AboutRAS />} />
           <Route path="/about-event" element={<AboutEvent />} />
           <Route path="/timeline" element={<Timeline />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </div>
     </Router>

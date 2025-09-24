@@ -1,0 +1,72 @@
+[
+  {
+    "teamName": "ByteBlasters",
+    "teamMembers": ["Alice Johnson", "Bob Smith", "Carol Davis"],
+    "contact": "bytebasters@example.com",
+    "points": 2850,
+    "positionChange": 1
+  },
+  {
+    "teamName": "CodeCrushers",
+    "teamMembers": ["David Wilson", "Emma Brown", "Frank Miller"],
+    "contact": "codecrushers@example.com",
+    "points": 2720,
+    "positionChange": -1
+  },
+  {
+    "teamName": "TechTitans",
+    "teamMembers": ["Grace Lee", "Henry Chen", "Ivy Rodriguez"],
+    "contact": "techtitans@example.com",
+    "points": 2650,
+    "positionChange": 2
+  },
+  {
+    "teamName": "CyberWarriors",
+    "teamMembers": ["Jack Thompson", "Kate Anderson", "Liam Parker"],
+    "contact": "cyberwarriors@example.com",
+    "points": 2480,
+    "positionChange": -2
+  },
+  {
+    "teamName": "PixelPioneers",
+    "teamMembers": ["Mia Garcia", "Noah Martinez", "Olivia Taylor"],
+    "contact": "pixelpioneers@example.com",
+    "points": 2350,
+    "positionChange": 0
+  },
+  {
+    "teamName": "DataDragons",
+    "teamMembers": ["Paul White", "Quinn Johnson", "Ruby Clark"],
+    "contact": "datadragons@example.com",
+    "points": 2200,
+    "positionChange": 3
+  },
+  {
+    "teamName": "AlgoAces",
+    "teamMembers": ["Sam Wilson", "Tina Lewis", "Uma Singh"],
+    "contact": "algoaces@example.com",
+    "points": 2100,
+    "positionChange": -1
+  },
+  {
+    "teamName": "BinaryBeasts",
+    "teamMembers": ["Victor Kim", "Wendy Jones", "Xavier Cruz"],
+    "contact": "binarybeasts@example.com",
+    "points": 1950,
+    "positionChange": 1
+  },
+  {
+    "teamName": "LogicLegends",
+    "teamMembers": ["Yara Ahmed", "Zach Cooper", "Anna Bell"],
+    "contact": "logiclegends@example.com",
+    "points": 1800,
+    "positionChange": -2
+  },
+  {
+    "teamName": "ScriptSquad",
+    "teamMembers": ["Ben Foster", "Chloe Wright", "Dylan Ross"],
+    "contact": "scriptsquad@example.com",
+    "points": 1650,
+    "positionChange": 0
+  }
+]
