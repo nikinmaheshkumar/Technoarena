@@ -11,6 +11,7 @@ export default function Navbar() {
     // { label: "About RAS", onClick: () => { setMobileMenuOpen(false); navigate("/about-ras"); } },
     { label: "About Event", onClick: () => { setMobileMenuOpen(false); navigate("/about-event"); } },
     { label: "Timeline", onClick: () => { setMobileMenuOpen(false); navigate("/timeline"); } },
+    { label: "Leaderboard", onClick: () => { setMobileMenuOpen(false); navigate("/leaderboard"); } },
   ];
 
   // Common transparent/glass effect style
