@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronUpIcon, ChevronDownIcon, MinusIcon } from "@heroicons/react/24/solid";
 import leaderboardData from "../data/leaderboard.json";
 import Sparkline from "../components/Sparkline";
+import TeamMembersAccordion from "../components/TeamMembersAccordion";
 
 export default function Leaderboard() {
   const [teams, setTeams] = useState([]);
@@ -113,12 +114,12 @@ export default function Leaderboard() {
         className="max-w-6xl mx-auto"
       >
         {/* Headers */}
-        <div className="hidden md:grid grid-cols-14 gap-4 mb-6 px-6 py-4 text-gray-300 font-semibold text-sm uppercase tracking-wider">
+        <div className="hidden md:grid grid-cols-12 gap-4 mb-6 px-6 py-4 text-gray-100 font-semibold text-sm uppercase tracking-wider">
           <div className="col-span-1 text-center">Rank</div>
           <div className="col-span-3">Team Name</div>
-          <div className="col-span-3">Members</div>
+          <div className="col-span-2">Members</div>
           <div className="col-span-2 text-center">Points</div>
-          <div className="col-span-3 text-center">Progress</div>
+          <div className="col-span-2 text-center">Progress</div>
           <div className="col-span-2 text-center">Change</div>
         </div>
 
@@ -152,58 +153,68 @@ export default function Leaderboard() {
               >
                 {/* Mobile Layout */}
                 <div className="md:hidden p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-4">
-                      <div className={`
-                        text-2xl font-bold font-Asimovian flex items-center justify-center
-                        w-12 h-12 rounded-full
-                        ${topThree ? "bg-red-600/50 text-white" : "bg-gray-600/50 text-gray-300"}
-                      `}>
-                        {getPositionBadge(position)}
-                      </div>
-                      <div>
-                        <h3 className={`text-xl font-bold font-Asimovian ${topThree ? "text-red-300" : "text-white"}`}>
-                          {team.teamName}
-                        </h3>
-                        <p className="text-sm text-gray-400">
-                          {team.teamMembers.join(", ")}
-                        </p>
-                      </div>
+                  {/* Row 1: Position and Team Name */}
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className={`
+                      text-2xl font-bold font-Asimovian flex items-center justify-center
+                      w-12 h-12 rounded-full
+                      ${topThree ? "bg-red-600/50 text-white" : "bg-gray-600/50 text-gray-100"}
+                    `}>
+                      {getPositionBadge(position)}
                     </div>
-                    <div className="text-right">
-                      <div className={`text-2xl font-bold ${topThree ? "text-red-400" : "text-white"}`}>
-                        {team.totalPoints.toLocaleString()}
-                      </div>
-                      <div className="flex items-center justify-end mt-1">
-                        {getPositionIcon(team.positionChange)}
-                        <span className="ml-1 text-sm text-gray-400">
-                          {Math.abs(team.positionChange) || "−"}
-                        </span>
-                      </div>
+                    <div className="flex-1">
+                      <h3 className={`text-base font-bold ${topThree ? "text-red-100" : "text-gray-100"}`}>
+                        {team.teamName}
+                      </h3>
                     </div>
                   </div>
-                  {/* Mobile Sparkline */}
-                  <div className="mt-4 flex items-center justify-center">
+
+                  {/* Row 2: Total Score and Change (side by side) */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <div className={`text-2xl font-bold ${topThree ? "text-red-200" : "text-gray-100"}`}>
+                        {team.totalPoints.toLocaleString()}
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">points</div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      {getPositionIcon(team.positionChange)}
+                      <span className={`text-lg font-semibold ${topThree ? "text-red-200" : "text-gray-100"}`}>
+                        {Math.abs(team.positionChange) || "−"}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Row 3: Sparkline Chart */}
+                  <div className="mb-4">
                     <div className="text-center">
-                      <div className="text-xs text-gray-400 mb-2">Points Progress</div>
+                      <div className="text-xs text-gray-300 mb-2">Points Progress</div>
                       <Sparkline 
                         data={team.points} 
                         width={120} 
                         height={40} 
-                        color={topThree ? "#f87171" : "#6b7280"}
+                        color={topThree ? "#f87171" : "#9ca3af"}
                       />
                     </div>
+                  </div>
+
+                  {/* Row 4: Team Members Accordion */}
+                  <div className="pt-2 border-t border-gray-600/30">
+                    <TeamMembersAccordion 
+                      members={team.teamMembers} 
+                      isTopThree={topThree}
+                    />
                   </div>
                 </div>
 
                 {/* Desktop Layout */}
-                <div className="hidden md:grid grid-cols-14 gap-4 items-center p-6">
+                <div className="hidden md:grid grid-cols-12 gap-4 items-center p-6">
                   {/* Rank */}
                   <div className="col-span-1 text-center">
                     <div className={`
                       text-2xl font-bold font-Asimovian flex items-center justify-center
                       w-12 h-12 rounded-full mx-auto
-                      ${topThree ? "bg-red-600/50 text-white" : "bg-gray-600/50 text-gray-300"}
+                      ${topThree ? "bg-red-600/50 text-white" : "bg-gray-600/50 text-gray-100"}
                     `}>
                       {getPositionBadge(position)}
                     </div>
@@ -211,41 +222,38 @@ export default function Leaderboard() {
 
                   {/* Team Name */}
                   <div className="col-span-3">
-                    <h3 className={`text-xl md:text-2xl font-bold font-Asimovian ${topThree ? "text-red-300" : "text-white"}`}>
+                    <h3 className={`text-base font-bold ${topThree ? "text-red-100" : "text-gray-100"}`}>
                       {team.teamName}
                     </h3>
                   </div>
 
                   {/* Members */}
-                  <div className="col-span-3">
-                    <div className="space-y-1">
-                      {team.teamMembers.map((member, memberIndex) => (
-                        <div key={memberIndex} className="text-gray-300 text-sm">
-                          {member}
-                        </div>
-                      ))}
-                    </div>
+                  <div className="col-span-2">
+                    <TeamMembersAccordion 
+                      members={team.teamMembers} 
+                      isTopThree={topThree}
+                    />
                   </div>
 
                   {/* Points */}
                   <div className="col-span-2 text-center">
-                    <div className={`text-2xl md:text-3xl font-bold ${topThree ? "text-red-400" : "text-white"}`}>
+                    <div className={`text-2xl md:text-3xl font-bold ${topThree ? "text-red-200" : "text-gray-100"}`}>
                       {team.totalPoints.toLocaleString()}
                     </div>
-                    <div className="text-xs text-gray-400 mt-1">points</div>
+                    <div className="text-xs text-gray-300 mt-1">points</div>
                   </div>
 
                   {/* Progress Sparkline */}
-                  <div className="col-span-3 text-center">
+                  <div className="col-span-2 text-center">
                     <div className="flex flex-col items-center">
-                      <div className="text-xs text-gray-400 mb-2">Points Progress</div>
+                      <div className="text-xs text-gray-300 mb-2">Progress</div>
                       <Sparkline 
                         data={team.points} 
-                        width={100} 
-                        height={35} 
-                        color={topThree ? "#f87171" : "#6b7280"}
+                        width={80} 
+                        height={30} 
+                        color={topThree ? "#f87171" : "#9ca3af"}
                       />
-                      <div className="text-xs text-gray-500 mt-1">
+                      <div className="text-xs text-gray-400 mt-1">
                         {team.points.length} rounds
                       </div>
                     </div>
@@ -255,7 +263,7 @@ export default function Leaderboard() {
                   <div className="col-span-2 text-center">
                     <div className="flex items-center justify-center space-x-2">
                       {getPositionIcon(team.positionChange)}
-                      <span className="text-lg font-semibold text-gray-300">
+                      <span className={`text-lg font-semibold ${topThree ? "text-red-200" : "text-gray-100"}`}>
                         {Math.abs(team.positionChange) || "−"}
                       </span>
                     </div>
@@ -318,6 +326,17 @@ export default function Leaderboard() {
           }
           50% { 
             box-shadow: 0 0 40px rgba(239, 68, 68, 0.8);
+          }
+        }
+        
+        @keyframes fadeIn {
+          0% { 
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          100% { 
+            opacity: 1;
+            transform: translateY(0);
           }
         }
         
