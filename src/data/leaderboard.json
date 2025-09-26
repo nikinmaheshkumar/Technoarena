@@ -1,3 +1,44 @@
 [
-  
+  {
+    "teamName": "PANCHATHANTHIRAM",
+    "teamMembers": ["Abishek AM", "Harihara Sudhan", "Sanjay Thandeeswaram", "Monish Kumar Thasma Omprakash", "Faazil Ahmed"],
+    "contact": "9384389464",
+    "points": [491]
+  },
+  {
+    "teamName": "Sea Horse",
+    "teamMembers": ["Pranali Paygonda Patil", "Harjot Kaur", "Krish Gupta", "Himank Singh", "Aakash Nair"],
+    "contact": "9591484191",
+    "points": [315]
+  },
+  {
+    "teamName": "Peppa pigs",
+    "teamMembers": ["Sarang Santosh Warrier", "Amal Sadiq", "Harshavardhan KS"],
+    "contact": "9894512454",
+    "points": [510]
+  },
+  {
+    "teamName": "Bitmask",
+    "teamMembers": ["Kumar Shivam Raj", "Shivani S", "Adarsh Kumar Singh"],
+    "contact": "8239651284",
+    "points": [392]
+  },
+  {
+    "teamName": "The boys",
+    "teamMembers": ["Aniket Paul", "Tashi Norbu", "Vivek Sharma"],
+    "contact": "9864541136",
+    "points": [600]
+  },
+  {
+    "teamName": "Innovator hub",
+    "teamMembers": ["Nandana girish", "Akshaya S kurup", "Anuja UM", "Dhanishka K P"],
+    "contact": "8825756840",
+    "points": [240]
+  },
+  {
+    "teamName": "Aacha Ji",
+    "teamMembers": ["Yashika bansal", "Nehal Saxena", "Himanshi Srivashtava", "Priyansh"],
+    "contact": "7404266189",
+    "points": [340]
+  }
 ]
